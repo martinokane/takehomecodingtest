@@ -15,7 +15,7 @@ This submission contains a Spring Boot application, which will run an API contai
 
 #### Docker setup
 
-This project uses a database to manage state. It was developed specifically with a postgres 17 container. The docker-compose file to build this has been included, and a running database is required for the application to start.
+The application requires a running database to work and the application will fail to start without one. While developing, I used a postgres 17 container, the docker-compose file for which has been included in this repo.
 
 To create a blank database, in the project root directory use the following command: `docker-compose up`.
 
@@ -39,7 +39,7 @@ Alternatively please see the included [OpenAPI spec file](/openapi.yaml) - which
 
 ## Testing
 
-The application features a full suite of JUnit unit tests that can be run using the following command from the root directory of the repo:
+The application features a suite of JUnit unit tests that can be run using the following command from the root directory of the repo:
 
     ./gradlew clean test
 
@@ -47,6 +47,6 @@ The application features a full suite of JUnit unit tests that can be run using 
 
 <i>Please see the [OpenAPI spec file](/openapi.yaml) or use the [embedded swagger-ui](http://localhost:8080/swagger-ui/index.html) (while the application is running) for additional documentation.</i>
 
-With the exception of the 'Create User' and 'Login' endpoints, requests must have an `Authorization` header with a valid JWT obtained from this application's 'Login' endpoint:
+With the exception of the 'Create User' and 'Login' endpoints, requests must have an `Authorization` header with a valid JWT obtained from this application's 'Login' endpoint and included as the bearer token:
 
     {"Authorization": "Bearer <token>"}
